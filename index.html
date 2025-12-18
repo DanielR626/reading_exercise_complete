@@ -606,6 +606,34 @@
         const resetBtn1 = document.getElementById('resetBtn1');
         const resultMessage1 = document.getElementById('resultMessage1');
         
+        // MEZCLAR PALABRAS AL INICIO
+        function shuffleWords() {
+            const container = document.getElementById('wordBank');
+            const wordArray = Array.from(container.children);
+            
+            // Fisher-Yates shuffle
+            for (let i = wordArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(wordArray[j]);
+            }
+        }
+        
+        // Mezclar palabras al cargar
+        shuffleWords();
+
+        // MEZCLAR PALABRAS AL INICIO
+        function shuffleWords() {
+            const container = document.getElementById("wordBank");
+            const words = Array.from(container.children);
+            
+            for (let i = words.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(words[j]);
+            }
+        }
+        
+        shuffleWords();
+        
         // Desktop events
         words.forEach(word => {
             word.addEventListener('dragstart', (e) => {
@@ -747,6 +775,7 @@
             });
             words.forEach(w => w.classList.remove('used'));
             resultMessage1.style.display = 'none';
+            shuffleWords(); // Mezclar palabras de nuevo
         });
         
         // ========== CONTINUAR ==========
